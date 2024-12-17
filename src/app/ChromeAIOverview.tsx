@@ -28,8 +28,8 @@ export default function ChromeAIOverview() {
           </div>
           <ul className="list-disc list-inside space-y-2">
             <li>
-              <strong>Translator API:</strong> Detects the text's language and
-              translates it to a target language.
+              <strong>Translator API:</strong> Detects the text&apos;s language
+              and translates it to a target language.
             </li>
             <li>
               <strong>Language detection API:</strong> <br />
@@ -52,7 +52,7 @@ export default function ChromeAIOverview() {
       {/* Pros and Cons */}
       <details className="mb-4">
         <summary className="cursor-pointer text-xl font-semibold text-orange-500 hover:underline">
-          ✅ Pros & ⚠️ Cons
+          ✅ Pros &amp; ⚠️ Cons
         </summary>
         <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Pros */}

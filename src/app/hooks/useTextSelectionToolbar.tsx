@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 type Position = {
   x: number;
@@ -44,7 +44,7 @@ export default function useTextSelectionToolbar() {
 
   const translateText = async () => {
     // Casting `self.translation` to any since there's no official type
-    const translationAPI = (self as any).translation;
+    const translationAPI = self.translation;
     if (!translationAPI || !("createDetector" in translationAPI)) {
       alert("Translation API not supported.");
       return;
@@ -65,7 +65,7 @@ export default function useTextSelectionToolbar() {
       console.log({ translationResult: result });
       setTranslatedText(result);
       return result;
-    } catch (err: any) {
+    } catch (err) {
       console.error("Translation error:", err);
       setTranslatedText("Error translating text.");
       return "Error translating text.";
@@ -73,21 +73,19 @@ export default function useTextSelectionToolbar() {
   };
 
   const summarizeText = async (): Promise<string> => {
-    const summarizationApiAvailable =
-      (window as any).ai !== undefined &&
-      (window as any).ai.summarizer !== undefined;
-
-    if (!summarizationApiAvailable) {
-      alert("This device does not support AI Summarization.");
-      return "Summarization not supported";
-    }
-
     try {
+      const aiAPI = window.ai;
+
+      if (!aiAPI?.summarizer) {
+        alert("This device does not support AI Summarization.");
+        return "Summarization not supported";
+      }
+
       const sharedContext = "This is a paragraph";
       const type = "tl;dr";
       const format = "plain-text";
       const length = "short";
-      const summarizer = await (window as any).ai.summarizer.create({
+      const summarizer = await aiAPI.summarizer.create({
         sharedContext,
         type,
         format,
@@ -101,7 +99,7 @@ export default function useTextSelectionToolbar() {
       setSummarizedText(summary);
       console.log({ summaryResult: summary });
       return summary;
-    } catch (err: any) {
+    } catch (err) {
       console.error("Summarization error:", err);
       setSummarizedText("Error summarizing text.");
       return "Error summarizing text.";

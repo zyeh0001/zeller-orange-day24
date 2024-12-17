@@ -14,7 +14,7 @@ export default function ChromeDevToolsAIAssistance() {
       {/* What's New */}
       <details className="mb-4">
         <summary className="cursor-pointer text-xl font-semibold text-orange-500 hover:underline">
-          ✨ What's New?
+          ✨ What&apos;s New?
         </summary>
         <div className="mt-2 pl-4 space-y-2">
           <p>Google Chrome DevTools now includes AI-driven assistance.</p>
@@ -38,7 +38,7 @@ export default function ChromeDevToolsAIAssistance() {
       {/* Pros and Cons */}
       <details className="mb-4">
         <summary className="cursor-pointer text-xl font-semibold text-orange-500 hover:underline">
-          ✅ Pros & ⚠️ Cons
+          ✅ Pros &amp; ⚠️ Cons
         </summary>
         <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Pros */}
