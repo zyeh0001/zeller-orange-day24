@@ -58,10 +58,6 @@ export default function ChromeDevToolsAIAssistance() {
               <li>
                 Data is sent to Google for improvement; avoid sensitive info.
               </li>
-              <li>
-                Retention policies and human review may concern privacy-minded
-                users.
-              </li>
             </ul>
           </div>
         </div>

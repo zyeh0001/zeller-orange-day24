@@ -60,9 +60,9 @@ export default function ChromeAIOverview() {
             <h3 className="text-lg font-bold text-green-600">✅ Pros</h3>
             <ul className="list-disc list-inside space-y-2 pl-4">
               <li>
-                Runs locally in the browser, ensuring privacy and low latency.
+                Runs locally in the browser, ensuring privacy, and low latency.
               </li>
-              <li>Faster real-time responses with no backend required.</li>
+              <li>Offline support, and its free.</li>
               <li>Improves accessibility for global users.</li>
             </ul>
           </div>

@@ -43,14 +43,15 @@ export default function useTextSelectionToolbar() {
   }, []);
 
   const translateText = async () => {
-    // Casting `self.translation` to any since there's no official type
-    const translationAPI = self.translation;
+    //Calling translation API
+    const translationAPI = window.translation;
     if (!translationAPI || !("createDetector" in translationAPI)) {
       alert("Translation API not supported.");
       return;
     }
 
     try {
+      // Detector to detect language type of selected text, to get the source language
       const detector = await translationAPI.createDetector();
       const detectionResult = await detector.detect(selectedText);
       const sourceLanguage = detectionResult[0].detectedLanguage;
@@ -75,12 +76,12 @@ export default function useTextSelectionToolbar() {
   const summarizeText = async (): Promise<string> => {
     try {
       const aiAPI = window.ai;
-
+      // check if API is available
       if (!aiAPI?.summarizer) {
         alert("This device does not support AI Summarization.");
         return "Summarization not supported";
       }
-
+      // set up summary text format
       const sharedContext = "This is a paragraph";
       const type = "tl;dr";
       const format = "plain-text";
@@ -93,8 +94,6 @@ export default function useTextSelectionToolbar() {
       });
 
       const summary = await summarizer.summarize(selectedText);
-
-      summarizer.destroy();
 
       setSummarizedText(summary);
       console.log({ summaryResult: summary });
